@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+.categoryContainer{
+  --bg:            #0B1220;
+  --surface:       #141C30;
+  --surface-alt:   #1A2338;
+  --line:          #263252;
+  --lane:          #FF6B35;
+  --route:         #2DD4BF;
+  --amber:         #FBBF24;
+  --green:         #34D399;
+  --text:          #EDF1F7;
+  --text-dim:      #8A96B2;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  padding:4px;
+  min-height:100vh;
+  color:var(--text);
+  font-family:var(--font-body);
+}
+
+.categoryCard{
+  position:relative;
+  background:var(--surface);
+  border:1px solid var(--line);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 14px 34px rgba(0,0,0,.35);
+  margin-bottom:22px;
+}
+
+.welcomeEyebrow{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--route);
+  background:rgba(45,212,191,.1);
+  border:1px solid rgba(45,212,191,.3);
+  padding:4px 10px;
+  border-radius:6px;
+  margin-bottom:14px;
+}
+
+.categoryCard h1,
+.categoryTableCard h2{
+  font-family:var(--font-display);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:0 0 22px;
+}
+
+.categoryCard h1{ font-size:26px; }
+.categoryCard h1 svg{ color:var(--lane); }
+.categoryTableCard h2 svg{ color:var(--route); font-size:18px; }
+
+.inputGroup{
+  margin-bottom:20px;
+}
+
+.inputGroup label{
+  display:block;
+  margin-bottom:8px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--text-dim);
+}
+
+.inputGroup input{
+  width:100%;
+  padding:14px;
+  background:var(--surface-alt);
+  border:1px solid var(--line);
+  border-radius:10px;
+  font-size:14px;
+  color:var(--text);
+  outline:none;
+  transition:.3s;
+  box-sizing:border-box;
+}
+
+.inputGroup input[type="file"]{
+  color:var(--text-dim);
+  cursor:pointer;
+}
+
+.inputGroup input:focus{
+  border-color:var(--lane);
+  box-shadow:0 0 0 3px rgba(255,107,53,.15);
+}
+
+.categoryActions{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+
+.addBtn,
+.showBtn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border:none;
+  padding:12px 22px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:14px;
+  transition:.2s ease;
+}
+
+.addBtn{
+  background:var(--lane);
+  color:#0B1220;
+  box-shadow:0 8px 20px rgba(255,107,53,.3);
+}
+
+.addBtn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 26px rgba(255,107,53,.42);
+}
+
+.showBtn{
+  background:var(--surface-alt);
+  color:var(--text);
+  border:1px solid var(--line);
+}
+
+.showBtn:hover{
+  border-color:var(--route);
+  color:#fff;
+}
+
+.categoryTableCard{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:26px;
+  box-shadow:0 14px 34px rgba(0,0,0,.35);
+}
+
+.categoryTableCard table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0 10px;
+}
+
+.categoryTableCard th{
+  color:var(--text-dim);
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:600;
+  text-align:left;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  padding:0 16px 8px;
+  border-bottom:1px dashed var(--line);
+}
+
+.categoryTableCard td{
+  padding:14px 16px;
+  color:var(--text);
+  font-size:14px;
+  background:var(--surface-alt);
+}
+
+.categoryTableCard td:first-child{
+  border-radius:12px 0 0 12px;
+  font-family:var(--font-mono);
+  color:var(--route);
+  font-size:12px;
+}
+
+.categoryTableCard td:last-child{
+  border-radius:0 12px 12px 0;
+}
+
+.categoryTableCard tr:hover td{
+  background:#212C48;
+}
+
+.deleteBtn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(239,68,68,.15);
+  color:#f87171;
+  border:1px solid rgba(239,68,68,.35);
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s ease;
+}
+
+.deleteBtn:hover{
+  background:#ef4444;
+  color:#fff;
+}
+
+.noData{
+  text-align:center;
+  padding:20px;
+  color:var(--text-dim);
+  font-weight:600;
+}
+
+@media(max-width:900px){
+  .categoryActions{
+    flex-direction:column;
+  }
+
+  .addBtn,
+  .showBtn{
+    width:100%;
+    justify-content:center;
+  }
+
+  .categoryTableCard{
+    overflow-x:auto;
+  }
+
+  .categoryTableCard table{
+    min-width:600px;
+  }
+}

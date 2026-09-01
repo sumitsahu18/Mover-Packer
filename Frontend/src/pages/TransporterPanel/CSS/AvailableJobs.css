@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap');
+
+.jobsPage{
+  --bg:          #0B1220;
+  --surface:     #141C30;
+  --surface-alt: #1A2338;
+  --line:        #263252;
+  --lane:        #FF6B35;
+  --route:       #2DD4BF;
+  --amber:       #FBBF24;
+  --text:        #EDF1F7;
+  --text-dim:    #8A96B2;
+
+  font-family:'Inter', sans-serif;
+  color:var(--text);
+}
+
+.jobsPage h1, .jobsPage h2, .jobsPage h3, .jobsPage h4{
+  font-family:'Space Grotesk', sans-serif;
+}
+
+/* Signature dashed divider (matches dashboard) */
+.laneDivider{
+  height:0;
+  margin:22px 2px;
+  border-top:3px dashed var(--lane);
+  opacity:.35;
+}
+
+/* =========================================================
+   Header
+========================================================= */
+
+.jobsHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:16px;
+}
+
+.jobsEyebrow{
+  display:inline-block;
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--route);
+  background:rgba(45,212,191,.1);
+  border:1px solid rgba(45,212,191,.3);
+  padding:4px 10px;
+  border-radius:6px;
+  margin-bottom:10px;
+}
+
+.jobsHeader h1{
+  margin:0;
+  color:#fff;
+  font-size:28px;
+  font-weight:700;
+}
+
+.jobsHeader p{
+  margin-top:6px;
+  color:var(--text-dim);
+  font-size:14px;
+}
+
+.jobsSearch{
+  width:320px;
+  height:46px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 16px;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.jobsSearch svg{
+  color:var(--route);
+  flex-shrink:0;
+}
+
+.jobsSearch input{
+  width:100%;
+  background:transparent;
+  border:none;
+  outline:none;
+  color:#fff;
+  font-size:13px;
+  font-family:'JetBrains Mono', monospace;
+}
+
+.jobsSearch input::placeholder{
+  color:var(--text-dim);
+}
+
+.jobsSearch:focus-within{
+  border-color:var(--route);
+  box-shadow:0 0 0 3px rgba(45,212,191,.15);
+}
+
+/* Loading State Text */
+.loadingText{
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 0;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--route);
+  font-size: 14px;
+}
+
+/* =========================================================
+   Jobs grid + card
+========================================================= */
+
+.jobsGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+  gap:18px;
+}
+
+.jobCard{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  transition:transform .25s ease, border-color .25s ease;
+}
+
+.jobCard:hover{
+  transform:translateY(-5px);
+  border-color:var(--lane);
+}
+
+.jobCardTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.jobId{
+  font-family:'JetBrains Mono', monospace;
+  font-size:12px;
+  color:var(--route);
+}
+
+.jobPosted{
+  font-size:11px;
+  color:var(--text-dim);
+  font-family:'JetBrains Mono', monospace;
+}
+
+.jobCard h3{
+  margin:10px 0 14px;
+  color:#fff;
+  font-size:17px;
+}
+
+/* Route */
+.jobRoute{
+  margin-bottom:14px;
+}
+
+.routePoint{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+}
+
+.routePoint p{
+  margin:0;
+  font-size:13px;
+  color:var(--text);
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  margin-top:4px;
+  flex-shrink:0;
+}
+
+.dot.pickup{
+  background:var(--route);
+  box-shadow:0 0 0 3px rgba(45,212,191,.15);
+}
+
+.dot.drop{
+  background:var(--lane);
+  box-shadow:0 0 0 3px rgba(255,107,53,.15);
+}
+
+.routeLine{
+  width:1px;
+  height:14px;
+  margin-left:4px;
+  border-left:1px dashed var(--line);
+}
+
+/* Meta */
+.jobMeta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.metaItem{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  background:var(--surface-alt);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:6px 10px;
+  font-size:12px;
+  color:var(--text-dim);
+}
+
+.metaItem svg{
+  color:var(--amber);
+  font-size:12px;
+}
+
+/* Footer */
+.jobCardFooter{
+  margin-top:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-top:14px;
+  border-top:1px dashed var(--line);
+}
+
+.jobBudget p{
+  margin:0;
+  font-size:11px;
+  color:var(--text-dim);
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.jobBudget h4{
+  margin:2px 0 0;
+  font-family:'JetBrains Mono', monospace;
+  color:#fff;
+  font-size:15px;
+}
+
+.quoteBtn{
+  border:none;
+  background:var(--lane);
+  color:#0B1220;
+  font-weight:700;
+  font-size:13px;
+  padding:11px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.quoteBtn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(255,107,53,.3);
+}
+
+.quotedBtn{
+  border:1px solid var(--line);
+  background:var(--surface-alt);
+  color:var(--text-dim);
+  font-size:13px;
+  padding:11px 18px;
+  border-radius:10px;
+  cursor:not-allowed;
+}
+
+/* Empty state */
+.emptyState{
+  grid-column:1 / -1;
+  text-align:center;
+  padding:60px 20px;
+  color:var(--text-dim);
+}
+
+.emptyState svg{
+  font-size:34px;
+  color:var(--line);
+  margin-bottom:10px;
+}
+
+.emptyState h3{
+  color:#fff;
+  margin:0 0 6px;
+}
+
+/* =========================================================
+   Send Quotation modal
+========================================================= */
+
+.modalOverlay{
+  position:fixed;
+  inset:0;
+  background:rgba(6,10,20,.7);
+  backdrop-filter:blur(4px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:1100;
+  padding:20px;
+}
+
+.quoteModal{
+  width:100%;
+  max-width:440px;
+  max-height:90vh;
+  overflow-y:auto;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:26px;
+  box-shadow:0 30px 60px rgba(0,0,0,.5);
+}
+
+.quoteModalHeader{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:14px;
+}
+
+.quoteModalHeader h2{
+  margin:4px 0 0;
+  color:#fff;
+  font-size:19px;
+}
+
+.closeBtn{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:var(--surface-alt);
+  color:var(--text);
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.2s ease;
+}
+
+.closeBtn:hover{
+  background:var(--lane);
+  border-color:var(--lane);
+  color:#0B1220;
+}
+
+.quoteRouteChip{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  background:var(--surface-alt);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:10px 12px;
+  margin-bottom:20px;
+  font-size:12px;
+  color:var(--text-dim);
+}
+
+.quoteRouteChip svg{
+  color:var(--route);
+  flex-shrink:0;
+}
+
+.quoteModal form{
+  display:flex;
+  flex-direction:column;
+}
+
+.quoteModal label{
+  font-size:12px;
+  color:var(--text-dim);
+  text-transform:uppercase;
+  letter-spacing:.5px;
+  margin:14px 0 6px;
+}
+
+.quoteModal label:first-of-type{
+  margin-top:0;
+}
+
+.inputWithIcon{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:var(--surface-alt);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:0 14px;
+  height:46px;
+}
+
+.inputWithIcon svg{
+  color:var(--route);
+  flex-shrink:0;
+}
+
+.inputWithIcon input,
+.inputWithIcon select{
+  width:100%;
+  height:100%;
+  background:transparent;
+  border:none;
+  outline:none;
+  color:#fff;
+  font-size:14px;
+  font-family:'JetBrains Mono', monospace;
+}
+
+.inputWithIcon select option{
+  background:var(--surface);
+  color:#fff;
+}
+
+.quoteModal textarea{
+  background:var(--surface-alt);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px 14px;
+  color:#fff;
+  font-family:'Inter', sans-serif;
+  font-size:13px;
+  resize:vertical;
+  outline:none;
+}
+
+.quoteModal textarea:focus,
+.inputWithIcon:focus-within{
+  border-color:var(--route);
+  box-shadow:0 0 0 3px rgba(45,212,191,.15);
+}
+
+.submitQuoteBtn{
+  margin-top:22px;
+  border:none;
+  background:var(--lane);
+  color:#0B1220;
+  font-weight:700;
+  font-size:14px;
+  padding:14px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.submitQuoteBtn:hover{
+  box-shadow:0 10px 22px rgba(255,107,53,.32);
+  transform:translateY(-2px);
+}
+
+/* =========================================================
+   Responsive
+========================================================= */
+
+@media(max-width:640px){
+  .jobsHeader{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .jobsSearch{
+    width:100%;
+  }
+  .jobsGrid{
+    grid-template-columns:1fr;
+  }
+}

@@ -1,0 +1,458 @@
+/* ═══════════════════════════════════════════
+   SwiftMove — Login
+   Palette: Navy #0B1B2E · Indigo accent #2F6FED · Amber #F5A623
+   ═══════════════════════════════════════════ */
+
+.lp-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: radial-gradient(circle at 20% 20%, #16324f 0%, #0a1628 55%, #060d18 100%);
+  padding: 24px;
+}
+
+/* ── CARD ── the key fix: no fixed heights anywhere.
+   align-items: stretch makes both columns match the taller one
+   automatically, so the role dropdown / error messages can never
+   cause one panel to overflow or "jump" against the other. ── */
+.lp-card {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  max-width: 760px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 70px rgba(4, 12, 24, 0.55);
+}
+
+/* ── LEFT PANEL ── */
+.lp-left {
+  flex: 0 0 300px;
+  background: #0b1b2e;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-left::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(#16324f30 1px, transparent 1px),
+    linear-gradient(90deg, #16324f30 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+
+.lp-brand {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  animation: lpFadeUp 0.7s 0.15s both;
+}
+.lp-brand-name {
+  font-size: 21px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.3px;
+  margin: 0 0 4px;
+}
+.lp-brand-name span { color: #4f8cff; }
+.lp-brand-tag {
+  font-size: 11px;
+  color: #7d93ab;
+  margin: 0;
+}
+
+/* Scene: everything scales with the panel's real height now,
+   nothing is pinned to a pixel value that assumed a fixed card size. */
+.lp-scene {
+  position: relative;
+  flex: 1;
+  min-height: 150px;
+  margin: 20px 0;
+}
+
+.lp-box {
+  position: absolute;
+  border-radius: 5px;
+  animation: lpFloat 2.4s ease-in-out infinite;
+}
+.lp-box::after {
+  content: "";
+  position: absolute;
+  inset: 30% 10% 0;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+.lp-box::before {
+  content: "";
+  position: absolute;
+  top: 30%; left: 50%;
+  width: 1.5px;
+  height: 70%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lp-road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 34px;
+  height: 16px;
+  background: #142943;
+  border-radius: 3px;
+}
+.lp-road::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f5a623 0px, #f5a623 20px,
+    transparent 20px, transparent 36px
+  );
+  transform: translateY(-50%);
+  animation: lpRoadScroll 0.9s linear infinite;
+}
+@keyframes lpRoadScroll {
+  from { background-position: 0 0; }
+  to   { background-position: -56px 0; }
+}
+
+.lp-truck-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 48px;
+  transform: translateX(-50%);
+  animation: lpTruckIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+@keyframes lpTruckIn {
+  from { opacity: 0; transform: translate(calc(-50% - 140px), 0); }
+  to   { opacity: 1; transform: translateX(-50%); }
+}
+
+.lp-truck { position: relative; width: 124px; height: 46px; }
+.lp-truck-body {
+  position: absolute;
+  left: 0; top: 0;
+  width: 86px; height: 36px;
+  background: #dce8f8;
+  border-radius: 6px 6px 2px 2px;
+}
+.lp-truck-body::after {
+  content: "";
+  position: absolute;
+  inset: 5px 7px;
+  background: #b8cfe8;
+  border-radius: 3px;
+  opacity: 0.5;
+}
+.lp-truck-cab {
+  position: absolute;
+  right: 0; top: 5px;
+  width: 42px; height: 31px;
+  background: #2f6fed;
+  border-radius: 4px 6px 2px 2px;
+}
+.lp-truck-cab::after {
+  content: "";
+  position: absolute;
+  top: 4px; left: 5px;
+  width: 17px; height: 11px;
+  background: #a8c8ff;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+.lp-truck-wheel {
+  position: absolute;
+  bottom: -7px;
+  width: 15px; height: 15px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  border: 3px solid #3a4a5c;
+  animation: lpWheel 0.5s linear infinite;
+}
+.lp-truck-wheel::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: #6b7c8d;
+  border-radius: 50%;
+}
+@keyframes lpWheel {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.lp-w1 { left: 10px; }
+.lp-w2 { left: 54px; }
+.lp-w3 { right: 8px; }
+
+@keyframes lpFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-9px); }
+}
+
+.lp-stats {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  animation: lpFadeUp 0.7s 0.75s both;
+}
+.lp-stat { text-align: center; }
+.lp-stat strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+}
+.lp-stat span {
+  font-size: 9px;
+  color: #7d93ab;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lp-tagline {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin: 10px 0 0;
+  font-size: 11px;
+  color: #4f8cff;
+  letter-spacing: 0.05em;
+  animation: lpFadeUp 0.7s 0.85s both;
+}
+
+/* ── RIGHT PANEL ── */
+.lp-right {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 34px;
+}
+
+.lp-form-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #2f6fed;
+  margin: 0 0 6px;
+}
+
+.lp-form-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0b1b2e;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+
+/* Each field is a fixed-shape unit: label, control, then a reserved
+   error slot. The slot exists whether or not there's an error, so
+   nothing above or below it ever shifts when validation kicks in. */
+.lp-field {
+  margin-bottom: 14px;
+}
+.lp-field label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.lp-field input,
+.lp-select-wrap select {
+  width: 100%;
+  box-sizing: border-box;
+  height: 42px;
+  padding: 0 14px;
+  border: 1.5px solid #dce3ea;
+  border-radius: 9px;
+  font-size: 13.5px;
+  color: #0f1e2e;
+  background: #f8fafc;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.lp-field input:focus,
+.lp-select-wrap select:focus {
+  border-color: #2f6fed;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(47, 111, 237, 0.12);
+}
+
+/* Custom select — same height & focus ring as text inputs, and a
+   consistent chevron instead of the browser's native arrow, so it
+   never reads as a visually different "weight" of control. */
+.lp-select-wrap { position: relative; }
+.lp-select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  font-weight: 600;
+  cursor: pointer;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%232C3E50' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+.lp-pass-wrap { position: relative; }
+.lp-pass-wrap input { padding-right: 48px; }
+.lp-pass-toggle {
+  position: absolute;
+  right: 12px; top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8a9bb0;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px;
+}
+.lp-pass-toggle:hover { color: #2f6fed; }
+
+.lp-error {
+  min-height: 15px;
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #dc2626;
+}
+
+.lp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.lp-remember {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: #6b7c8d;
+  cursor: pointer;
+}
+.lp-remember input { width: auto; height: auto; margin: 0; }
+.lp-forgot {
+  font-size: 11.5px;
+  color: #2f6fed;
+  text-decoration: none;
+  font-weight: 600;
+}
+.lp-forgot:hover { text-decoration: underline; }
+
+.lp-btn {
+  width: 100%;
+  height: 42px;
+  background: #0b1b2e;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.2s, transform 0.1s;
+}
+.lp-btn:hover { background: #16324f; }
+.lp-btn:active { transform: scale(0.98); }
+
+/* Reserved slot for the general (non-field) error, so submitting
+   an invalid login doesn't nudge the divider/Google button down. */
+.lp-output {
+  min-height: 18px;
+  margin: 10px 0 0;
+  font-size: 12.5px;
+  color: #dc2626;
+  text-align: center;
+}
+
+.lp-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0;
+}
+.lp-divider::before,
+.lp-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e2e8ef;
+}
+.lp-divider span { font-size: 10.5px; color: #9aabb8; }
+
+.lp-google-btn {
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  color: #2c3e50;
+  border: 1.5px solid #dce3ea;
+  border-radius: 9px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s, border-color 0.2s;
+}
+.lp-google-btn:hover { background: #f8fafc; border-color: #c6d0da; }
+
+.lp-register {
+  text-align: center;
+  font-size: 11.5px;
+  color: #6b7c8d;
+  margin: 12px 0 0;
+}
+.lp-register a {
+  color: #2f6fed;
+  font-weight: 700;
+  text-decoration: none;
+}
+.lp-register a:hover { text-decoration: underline; }
+
+@keyframes lpFadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .lp-card {
+    flex-direction: column;
+    max-width: 400px;
+  }
+  .lp-left {
+    flex: none;
+    padding: 24px 20px;
+  }
+  .lp-scene { min-height: 130px; margin: 16px 0; }
+  .lp-stats { margin-top: 0; }
+  .lp-right { padding: 28px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-box, .lp-truck-wrap, .lp-road::after, .lp-truck-wheel,
+  .lp-brand, .lp-stats, .lp-tagline {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}

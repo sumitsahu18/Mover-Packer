@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+.manageTransportersContainer{
+  --bg:            #0B1220;
+  --surface:       #141C30;
+  --surface-alt:   #1A2338;
+  --line:          #263252;
+  --lane:          #FF6B35;
+  --route:         #2DD4BF;
+  --amber:         #FBBF24;
+  --green:         #34D399;
+  --text:          #EDF1F7;
+  --text-dim:      #8A96B2;
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  min-height:100vh;
+  padding:4px;
+  box-sizing:border-box;
+  font-family:var(--font-body);
+  color:var(--text);
+}
+
+.manageTransportersCard{
+  width:100%;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:26px;
+  box-shadow:0 14px 34px rgba(0,0,0,.35);
+}
+
+/* Header */
+
+.mtHeader{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:24px;
+  padding-bottom:20px;
+  border-bottom:1px dashed var(--line);
+}
+
+.welcomeEyebrow{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:2px;
+  color:var(--route);
+  background:rgba(45,212,191,.1);
+  border:1px solid rgba(45,212,191,.3);
+  padding:4px 10px;
+  border-radius:6px;
+  margin-bottom:10px;
+}
+
+.mtHeader h1{
+  margin:0;
+  color:#fff;
+  font-family:var(--font-display);
+  font-size:26px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.mtHeader h1 svg{
+  color:var(--lane);
+  font-size:22px;
+}
+
+.mtCount{
+  background:var(--surface-alt);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px 22px;
+  text-align:center;
+}
+
+.mtCount h2{
+  margin:0;
+  font-family:var(--font-mono);
+  font-size:26px;
+  color:#fff;
+}
+
+.mtCount p{
+  margin:2px 0 0;
+  font-size:12px;
+  color:var(--text-dim);
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+/* Table */
+
+.tableWrapper{
+  width:100%;
+  overflow-x:auto;
+  border-radius:14px;
+}
+
+table{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0 10px;
+}
+
+table th{
+  padding:0 16px 10px;
+  font-family:var(--font-mono);
+  font-size:12px;
+  font-weight:600;
+  text-align:left;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--text-dim);
+  white-space:nowrap;
+  border-bottom:1px dashed var(--line);
+}
+
+table tbody tr{
+  background:var(--surface-alt);
+  transition:background .2s ease;
+}
+
+table tbody tr:hover{
+  background:#212C48;
+}
+
+table td{
+  padding:14px 16px;
+  text-align:left;
+  color:var(--text);
+  font-size:14px;
+  white-space:nowrap;
+}
+
+table td:first-child{
+  border-radius:12px 0 0 12px;
+  font-family:var(--font-mono);
+  color:var(--route);
+  font-size:12px;
+}
+
+table td:last-child{
+  border-radius:0 12px 12px 0;
+}
+
+.verified,
+.blocked{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 12px;
+  border-radius:50px;
+  font-size:12px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.verified{
+  background:rgba(52,211,153,.15);
+  color:var(--green);
+  border:1px solid rgba(52,211,153,.35);
+}
+
+.blocked{
+  background:rgba(251,191,36,.15);
+  color:var(--amber);
+  border:1px solid rgba(251,191,36,.35);
+}
+
+.actionBtns{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.statusBtn{
+  background:var(--lane);
+  color:#0B1220;
+  border:none;
+  padding:8px 16px;
+  border-radius:8px;
+  font-weight:700;
+  font-size:13px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.statusBtn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(255,107,53,.35);
+}
+
+.deleteBtn{
+  background:rgba(239,68,68,.15);
+  color:#f87171;
+  border:1px solid rgba(239,68,68,.35);
+  width:34px;
+  height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.deleteBtn:hover{
+  background:#ef4444;
+  color:#fff;
+}
+
+.noData{
+  padding:24px;
+  text-align:center;
+  font-weight:600;
+  color:var(--text-dim);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .mtHeader{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  table th,
+  table td{
+    font-size:13px;
+    padding:10px 12px;
+  }
+}

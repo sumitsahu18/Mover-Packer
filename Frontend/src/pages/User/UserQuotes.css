@@ -1,0 +1,190 @@
+.userQuotesContainer {
+  background: #141c30;
+  border: 1px solid #263252;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.userQuotesContainer h2 {
+  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.quotesList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.quoteCard {
+  background: #1a2338;
+  border: 1px solid #263252;
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color 0.2s ease;
+}
+
+.quoteCard.accepted {
+  border-color: #2dd4bf;
+}
+
+.quoteCard.rejected {
+  opacity: 0.6;
+}
+
+.quoteHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transporterLabel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #2dd4bf;
+  letter-spacing: 1px;
+}
+
+.quoteHeader h3 {
+  margin: 2px 0 0;
+  color: #fff;
+  font-size: 16px;
+}
+
+.quotePrice {
+  display: flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff6b35;
+}
+
+.quoteDetails {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.detailChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #141c30;
+  border: 1px solid #263252;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #8a96b2;
+}
+
+.detailChip svg {
+  color: #fbbf24;
+}
+
+.quoteNote {
+  font-size: 13px;
+  color: #edf1f7;
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 8px 0 12px;
+}
+
+.quoteActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.acceptBtn {
+  background: #2dd4bf;
+  color: #0b1220;
+  border: none;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.acceptBtn:hover {
+  background: #22b8a5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(45, 212, 191, 0.3);
+}
+
+.rejectBtn {
+  background: transparent;
+  color: #8a96b2;
+  border: 1px solid #263252;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rejectBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #edf1f7;
+}
+
+.jobTitleRef {
+  font-size: 12px;
+  color: #8a96b2;
+  margin-top: 2px;
+}
+
+.quoteTitle {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.quoteRoute {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 10px 0;
+  font-size: 13px;
+  color: #edf1f7;
+}
+
+.routeItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.routeItem .pickupIcon {
+  color: #22c55e;
+}
+
+.routeItem .dropIcon {
+  color: #ff6b35;
+}
+
+.revealBox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 4px 0 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #263252;
+}
+
+.revealChip {
+  background: rgba(45, 212, 191, 0.08);
+  border-color: #2dd4bf;
+  color: #2dd4bf;
+  font-weight: 600;
+}
+
+.revealChip svg {
+  color: #2dd4bf;
+}

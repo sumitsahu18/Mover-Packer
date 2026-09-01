@@ -1,0 +1,21 @@
+.tpAdminWrapper{
+  --sidebar-w: 280px;
+  min-height: 100vh;
+  background: #0B1220;
+}
+
+.tpAdminContent{
+  margin-left: var(--sidebar-w);
+  padding-top: 80px; /* height of tpHeader */
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  min-height: 100vh;
+  color: #EDF1F7;
+}
+
+@media (max-width: 900px){
+  .tpAdminContent{
+    margin-left: 0;
+  }
+}

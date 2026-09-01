@@ -1,0 +1,147 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.userPanel{
+
+    display:flex;
+    background:#f5f7fb;
+    min-height:100vh;
+
+}
+
+.userContent{
+
+    flex:1;
+    margin-left:280px;
+    display:flex;
+    flex-direction:column;
+
+}
+
+/*========================*/
+
+.topbar{
+
+    height:80px;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 30px;
+    box-shadow:0 3px 12px rgba(0,0,0,.05);
+
+}
+
+.topbarLeft h2{
+
+    font-size:28px;
+    color:#222;
+
+}
+
+.topbarLeft p{
+
+    color:#777;
+    margin-top:5px;
+
+}
+
+.topbarRight{
+
+    display:flex;
+    align-items:center;
+    gap:25px;
+
+}
+
+.notificationBtn{
+
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:50%;
+    background:#eef2ff;
+    cursor:pointer;
+    font-size:20px;
+
+}
+
+.profileBox{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+}
+
+.profileBox img{
+
+    width:50px;
+    height:50px;
+    border-radius:50%;
+
+}
+
+.profileBox h4{
+
+    color:#222;
+
+}
+
+.profileBox span{
+
+    color:#888;
+    font-size:14px;
+
+}
+
+/*========================*/
+
+.pageContent{
+
+    flex:1;
+    padding:30px;
+    overflow:auto;
+
+}
+
+/*========================*/
+
+@media(max-width:991px){
+
+.userContent{
+
+margin-left:0;
+
+}
+
+.topbar{
+
+padding:20px;
+
+height:auto;
+flex-wrap:wrap;
+gap:20px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.pageContent{
+
+padding:18px;
+
+}
+
+.topbarLeft h2{
+
+font-size:22px;
+
+}
+
+}
